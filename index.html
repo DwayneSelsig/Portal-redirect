@@ -7,6 +7,18 @@
 
   <title>Redirect to Microsoft Login</title>
 
+  <!-- Delay the body text for 1 second using a CSS animation -->
+  <style>
+    body p {
+      opacity: 0;
+      /* fadeIn animation lasts 0.5s, starts after a 1s delay, and stays visible */
+      animation: fadeIn 0.5s ease-in 1s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+
   <!-- JavaScript redirect -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -14,7 +26,7 @@
 
       // Build the query parameters for the Microsoft login redirect
       const params = new URLSearchParams({
-        // wsignin1.0: standard OAuth sign-in mode
+        // wa: standard OAuth sign-in mode
         wa: 'wsignin1.0',
         // wreply: the URL where the user will land after successful login
         wreply: 'https://educalvijn.sharepoint.com',
