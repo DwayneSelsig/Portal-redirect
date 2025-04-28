@@ -1,9 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<script>
-document.location.replace("https://login.microsoftonline.com/login.srf?wa=wsignin1%2E0&wreply=https%3A%2F%2Feducalvijn%2Esharepoint%2Ecom&whr=educalvijn.onmicrosoft.com");
-</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Redirect to Microsoft Login</title>
+
+  <!-- JavaScript redirect -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const baseUrl = 'https://login.microsoftonline.com/login.srf';
+
+      // Build the query parameters for the Microsoft login redirect
+      const params = new URLSearchParams({
+        // wsignin1.0: standard OAuth sign-in mode
+        wa: 'wsignin1.0',
+        // wreply: the URL where the user will land after successful login
+        wreply: 'https://educalvijn.sharepoint.com',
+        // whr: the tenant domain, so the login page shows the organization's branding
+        whr: 'educalvijn.onmicrosoft.com'
+      });
+
+      // Use replace() so this redirect does not add to the browser history
+      window.location.replace(`${baseUrl}?${params.toString()}`);
+    });
+  </script>
+
+  <!-- Fallback for users with JavaScript disabled -->
+  <noscript>
+    <meta http-equiv="refresh"
+          content="0;url=https://login.microsoftonline.com/login.srf?wa=wsignin1.0&amp;wreply=https://educalvijn.sharepoint.com&amp;whr=educalvijn.onmicrosoft.com">
+  </noscript>
 </head>
 <body>
+  <p>If you are not automatically redirected, <a href="https://login.microsoftonline.com/login.srf?wa=wsignin1.0&amp;wreply=https://educalvijn.sharepoint.com&amp;whr=educalvijn.onmicrosoft.com">click here</a>.</p>
 </body>
 </html>
